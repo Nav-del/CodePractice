@@ -1,13 +1,15 @@
 class Solution {
     public int[] twoSum(int[] a, int target) {
-        Map<Integer,Integer> map= new HashMap<>();
+        Map<Integer,Integer> harshit = new HashMap<>();
+
         for(int i=0;i<a.length;i++){
-            int comp = target-a[i];
-            if( map.containsKey(comp)){
-                return new int[]{map.get(comp),i};
+            int y= target - a[i];
+
+            if(harshit.containsKey(y)){
+                return new int[]{harshit.get(y),i};
             }
             else{
-                map.put(a[i],i);
+                harshit.put(a[i],i);
             }
         }
         throw new IllegalArgumentException("No Match");
