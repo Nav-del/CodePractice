@@ -59,3 +59,40 @@ class Solution {
 */
 
 //Approach 3
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int i = 0,
+            j = nums.length - 1;
+
+        while (i < j) {
+            int mod1 = nums[i] % 2,
+                mod2 = nums[j] % 2;
+
+            if (mod1 == 1 && mod2 == 0) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+
+            if (mod1 == 0) {
+                i++;
+            }
+
+            if (mod2 == 1) {
+                j--;
+            }
+        }
+
+        return nums;
+    }
+}
+/*
+1. Set two pointers: Place a left pointer at the very beginning of the array (index 0) and a right pointer at the very end of the array.
+2. Loop while pointers haven't met: Keep repeating the process as long as the left pointer is strictly to the left of the right pointer.
+3. Check parity at both pointers: Check whether the number at the left pointer is even or odd, and whether the number at the right pointer is even or odd.
+4. Swap mismatched numbers: If the left number is odd and the right number is even, swap their positions so the even number moves to the front and the odd number moves to the back. (Note: On the next loop iteration, both pointers will naturally move inward since they are now in their valid spots).
+5. Advance the left pointer: If the number at the left pointer was already even, move the left pointer forward by one step.
+6. Move the right pointer backward: If the number at the right pointer was already odd, move the right pointer backward by one step.
+7. Return the result: Once the left and right pointers meet, all even numbers are on the left and all odd numbers are on the right, so return the modified array.
+
+*/
